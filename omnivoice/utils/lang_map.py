@@ -27,6 +27,8 @@ language names.
 # Maps lowercase language name -> language ID code
 
 LANG_NAME_TO_ID = {
+    "egyptian": "eg",
+    "saudi": "sa",
     "abadi": "kbt",
     "abkhazian": "ab",
     "abron": "abr",
