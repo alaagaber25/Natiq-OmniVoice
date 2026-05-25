@@ -68,6 +68,8 @@ Repository = "https://github.com/k2-fsa/OmniVoice"
 # Install PyTorch with CUDA support on Linux/Windows (CUDA doesn't exist for Mac).
 # NOTE: We must explicitly request them as `dependencies` above. These improved
 # versions will not be selected if they're only third-party dependencies.
+# The unified VOOM TTS environment uses the Torch 2.6 / CUDA 12.4 stack shared
+# with Chatterbox, so keep this local source package aligned with the root env.
 torch = [
   { index = "pytorch-cuda", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
 ]
@@ -77,16 +79,16 @@ torchaudio = [
 
 [[tool.uv.index]]
 name = "pytorch-cuda"
-# Use PyTorch built for NVIDIA Toolkit version 12.8.
+# Use PyTorch built for NVIDIA Toolkit version 12.4.
 # Available versions: https://pytorch.org/get-started/locally/
-url = "https://download.pytorch.org/whl/cu128"
+url = "https://download.pytorch.org/whl/cu124"
 # Only use this index when explicitly requested by `tool.uv.sources`.
 explicit = true
 
 [tool.uv]
 constraint-dependencies = [
-    "torch==2.8.0",
-    "torchaudio==2.8.0",
+    "torch==2.6.0",
+    "torchaudio==2.6.0",
 ]
 
 [tool.hatch.build.targets.sdist]
