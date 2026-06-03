@@ -191,6 +191,10 @@ class OmniVoiceConfig(PretrainedConfig):
 def _resolve_model_path(name_or_path: str) -> str:
     if os.path.isdir(name_or_path):
         return name_or_path
+    if os.path.isabs(name_or_path):
+        raise FileNotFoundError(
+            f"Local model path does not exist or is not a directory: {name_or_path}"
+        )
     from huggingface_hub import snapshot_download
 
     return snapshot_download(name_or_path)
