@@ -29,6 +29,7 @@ language names.
 LANG_NAME_TO_ID = {
     "egyptian": "eg",
     "saudi": "sa",
+    "emirati": "ae",
     "abadi": "kbt",
     "abkhazian": "ab",
     "abron": "abr",

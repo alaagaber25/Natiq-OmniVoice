@@ -52,6 +52,11 @@ from omnivoice.training.config import TrainingConfig
 logger = logging.getLogger(__name__)
 
 
+def _sample_length(sample):
+    """Top-level length fn (picklable for Windows ``spawn`` DataLoader workers)."""
+    return sample["length"]
+
+
 def build_model_and_tokenizer(
     config: TrainingConfig,
 ) -> Tuple[OmniVoice, AutoTokenizer]:
@@ -158,7 +163,9 @@ def build_dataloaders(
     train_manifests, dev_manifests = prepare_data_manifests_from_json(
         config.data_config
     )
-    raw_train_ds = WebDatasetReader(manifests=train_manifests, evaluation=False)
+    raw_train_ds = WebDatasetReader(
+        manifests=train_manifests, evaluation=False, shuffle_buffer_size=2000
+    )
 
     use_packing = config.attn_implementation == "flex_attention"
 
@@ -175,7 +182,7 @@ def build_dataloaders(
             max_length=config.max_sample_tokens,
             max_sample=config.max_batch_size,
             processor=processor,
-            length_fn=lambda s: s["length"],
+            length_fn=_sample_length,
         )
         collate_fn = PaddingDataCollator(processor, config.batch_tokens)
 
@@ -201,8 +208,8 @@ def build_dataloaders(
         num_workers=config.num_workers,
         collate_fn=collate_fn,
         worker_init_fn=init_fn,
-        pin_memory=True,
-        prefetch_factor=4,
+        pin_memory=False,
+        prefetch_factor=4 if config.num_workers > 0 else None,
     )
 
     eval_loader = None
@@ -222,7 +229,7 @@ def build_dataloaders(
                 max_length=config.max_sample_tokens,
                 max_sample=config.max_batch_size,
                 processor=processor,
-                length_fn=lambda s: s["length"],
+                length_fn=_sample_length,
             )
         eval_loader = DataLoader(
             dev_dataset,

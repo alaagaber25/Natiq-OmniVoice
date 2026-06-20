@@ -1,0 +1,15 @@
+{
+    "llm_name_or_path": "Qwen/Qwen3-0.6B",
+    "init_from_checkpoint": "/mnt/f/VOOM-AI/GitHubs/TTS/omnivoice-v2/models/natiq_v1",
+    "resume_from_checkpoint": null,
+
+    "learning_rate": 1e-5,
+    "steps": 5000,
+    "batch_tokens": 16384,
+    "gradient_accumulation_steps": 8,
+    "attn_implementation": "flex_attention",
+    "mixed_precision": "bf16",
+
+    "save_steps": 500, "eval_steps": 500, "logging_steps": 50,
+    "use_pinyin_ratio": 0.3, "instruct_ratio": 1.0, "only_instruct_ratio": 0.5
+}
