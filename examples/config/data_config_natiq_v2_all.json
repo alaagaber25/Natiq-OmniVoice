@@ -8,5 +8,15 @@
         { "language_id": "sa", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/wasaya/train/data.lst"],     "repeat": 1 },
         { "language_id": "eg", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/nadia/train/data.lst"],     "repeat": 1 },
         { "language_id": "eg", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/mokbeir/train/data.lst"],     "repeat": 1 }
+    ],
+    "dev": [
+        { "language_id": "sa", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/abajora/dev/data.lst"],       "repeat": 1 },
+        { "language_id": "sa", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/adam/dev/data.lst"],          "repeat": 1 },
+        { "language_id": "sa", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/dupamicaffeine/dev/data.lst"], "repeat": 1 },
+        { "language_id": "sa", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/genaya/dev/data.lst"],        "repeat": 1 },
+        { "language_id": "sa", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/nakhat/dev/data.lst"],        "repeat": 1 },
+        { "language_id": "sa", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/wasaya/dev/data.lst"],        "repeat": 1 },
+        { "language_id": "eg", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/nadia/dev/data.lst"],         "repeat": 1 },
+        { "language_id": "eg", "manifest_path": ["F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/Natiq-OmniVoice/data/tokens/mokbeir/dev/data.lst"],       "repeat": 1 }
     ]
 }

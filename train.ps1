@@ -17,7 +17,7 @@ $Repo        = "F:\VOOM-AI\GitHubs\TTS\omnivoice-v2\Natiq-OmniVoice"
 # Invoke accelerate as a module via the venv python (the accelerate.exe shim is a
 # uv trampoline that errors with "failed to canonicalize script path").
 $Python      = "F:\VOOM-AI\GitHubs\TTS\omnivoice-v2\.venv\Scripts\python.exe"
-$TrainConfig = "examples\config\train_config_natiq_v2_sdpa.json"   # SDPA = stable here
+$TrainConfig = "examples\config\train_config_natiq_v2_dialect.json"  # corrected ratios; SDPA = stable here
 $DataConfig  = "examples\config\data_config_natiq_v2_all.json"     # all 8 channels
 $OutputDir   = "exp\natiq_v2"
 $GpuIds      = "0"

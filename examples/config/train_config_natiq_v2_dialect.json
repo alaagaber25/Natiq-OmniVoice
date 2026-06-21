@@ -1,0 +1,43 @@
+{
+    "_comment": "Dialect fine-tune of natiq_v2 from natiq_v1. Prompt-based cloning + language tag, NO instruct/pinyin (the Natiq data has neither field). SDPA recipe, stable on the 20GB RTX 4000 Ada.",
+
+    "llm_name_or_path": "Qwen/Qwen3-0.6B",
+    "init_from_checkpoint": "F:/VOOM-AI/GitHubs/TTS/omnivoice-v2/models/natiq_v1",
+    "resume_from_checkpoint": null,
+
+    "audio_vocab_size": 1025,
+    "audio_mask_id": 1024,
+    "num_audio_codebook": 8,
+    "audio_codebook_weights": [8, 8, 6, 6, 4, 4, 2, 2],
+
+    "drop_cond_ratio": 0.1,
+    "prompt_ratio_range": [0.0, 0.3],
+    "mask_ratio_range": [0.0, 1.0],
+    "language_ratio": 0.8,
+    "use_pinyin_ratio": 0.0,
+    "instruct_ratio": 0.0,
+    "only_instruct_ratio": 0.0,
+
+    "learning_rate": 1e-5,
+    "weight_decay": 0.01,
+    "max_grad_norm": 1.0,
+    "steps": 15000,
+    "seed": 42,
+    "lr_scheduler_type": "cosine",
+    "warmup_type": "ratio",
+    "warmup_ratio": 0.03,
+
+    "batch_tokens": 2048,
+    "gradient_accumulation_steps": 4,
+    "num_workers": 0,
+
+    "attn_implementation": "sdpa",
+    "max_sample_tokens": 2000,
+    "min_sample_tokens": 50,
+    "max_batch_size": 16,
+
+    "mixed_precision": "bf16",
+    "allow_tf32": true,
+
+    "save_steps": 500, "eval_steps": 500, "logging_steps": 25
+}
