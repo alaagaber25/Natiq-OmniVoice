@@ -153,7 +153,8 @@ Equivalent manual command (from this dir):
 ```powershell
 $env:PYTHONPATH = "F:\VOOM-AI\GitHubs\TTS\omnivoice-v2\Natiq-OmniVoice"
 $env:PYTORCH_CUDA_ALLOC_CONF = "expandable_segments:True"
-& "..\.venv\Scripts\accelerate.exe" launch `
+# Use the module form, not accelerate.exe (the uv trampoline shim is broken).
+& "..\.venv\Scripts\python.exe" -m accelerate.commands.launch `
   --gpu_ids 0 --num_processes 1 `
   -m omnivoice.cli.train `
   --train_config examples\config\train_config_natiq_v2_sdpa.json `
@@ -203,3 +204,4 @@ nvidia-smi
 | WebDataset can't open `F:\...` paths | Use the **local** omnivoice (drive-letter handler) — i.e. `PYTHONPATH`. |
 | Inference warns "Language not recognized" for `sa`/`eg` | Add the dialect tags to the **local** `omnivoice/utils/lang_map.py` `LANG_IDS`. |
 | `flex_attention` errors / OOM at attention | Use the SDPA config; flex_attention is unusable on this GPU. |
+| `uv trampoline failed to canonicalize script path` from `accelerate.exe` | The uv console-script shim is broken; call the module instead: `python -m accelerate.commands.launch ...` (what `train.ps1` does). |

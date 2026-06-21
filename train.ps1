@@ -14,7 +14,9 @@
 
 # ---------------------------- CONFIG (edit me) ------------------------------
 $Repo        = "F:\VOOM-AI\GitHubs\TTS\omnivoice-v2\Natiq-OmniVoice"
-$Accelerate  = "F:\VOOM-AI\GitHubs\TTS\omnivoice-v2\.venv\Scripts\accelerate.exe"
+# Invoke accelerate as a module via the venv python (the accelerate.exe shim is a
+# uv trampoline that errors with "failed to canonicalize script path").
+$Python      = "F:\VOOM-AI\GitHubs\TTS\omnivoice-v2\.venv\Scripts\python.exe"
 $TrainConfig = "examples\config\train_config_natiq_v2_sdpa.json"   # SDPA = stable here
 $DataConfig  = "examples\config\data_config_natiq_v2_all.json"     # all 8 channels
 $OutputDir   = "exp\natiq_v2"
@@ -31,7 +33,7 @@ $env:PYTORCH_CUDA_ALLOC_CONF = "expandable_segments:True"
 
 Write-Host "Training: $TrainConfig + $DataConfig -> $OutputDir" -ForegroundColor Cyan
 
-& $Accelerate launch `
+& $Python -m accelerate.commands.launch `
   --gpu_ids $GpuIds --num_processes $NumProc `
   -m omnivoice.cli.train `
   --train_config $TrainConfig `
