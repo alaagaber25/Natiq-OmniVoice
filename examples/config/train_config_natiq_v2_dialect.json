@@ -21,7 +21,7 @@
     "learning_rate": 1e-5,
     "weight_decay": 0.01,
     "max_grad_norm": 1.0,
-    "steps": 15000,
+    "steps": 50000,
     "seed": 42,
     "lr_scheduler_type": "cosine",
     "warmup_type": "ratio",
@@ -39,5 +39,5 @@
     "mixed_precision": "bf16",
     "allow_tf32": true,
 
-    "save_steps": 500, "eval_steps": 500, "logging_steps": 25
+    "save_steps": 1000, "eval_steps": 1000, "logging_steps": 100
 }
